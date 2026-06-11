@@ -1,0 +1,96 @@
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.font-romance {
+    font-family: 'Dancing Script', cursive;
+}
+
+/* Ocultar barra de scroll en los botones de meses */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Botones de Mes Pastel Amigables */
+.mes-btn, .especial-filter-btn {
+    background-color: #ffffff;
+    border: 1px solid #fdf2f8;
+    color: #f43f5e;
+    white-space: nowrap;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+}
+.mes-btn:hover { background-color: #fff1f2; }
+.mes-btn.active {
+    background-color: #f43f5e;
+    border-color: #f43f5e;
+    color: #ffffff;
+}
+
+/* Botón Importantes Activo */
+.especial-filter-btn.active {
+    background-color: #e11d48;
+    color: #ffffff;
+    border-color: #e11d48;
+}
+
+/* Etiquetas de sugerencia del buscador */
+.tag-sug {
+    padding: 6px 12px;
+    background-color: #fbf7f8;
+    border: 1px solid #f3e8eb;
+    border-radius: 9999px;
+    color: #886b73;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+.tag-sug:hover {
+    background-color: #ffe4e6;
+    border-color: #fecdd3;
+    color: #e11d48;
+    transform: translateY(-1px);
+}
+
+/* Animación limpia de aparición */
+.card-appear {
+    animation: smoothUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes smoothUp {
+    from { opacity: 0; transform: translateY(10px) scale(0.99); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Estilos de las Tarjetas Blandas y Separadas */
+.card-ari {
+    border-left: 3.5px solid #c084fc;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px -1px rgba(192, 132, 252, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+}
+.card-isaias {
+    border-left: 3.5px solid #60a5fa;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px -1px rgba(96, 165, 250, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+}
+
+/* Tarjetas de Días Importantes */
+.card-especial {
+    background: linear-gradient(to bottom right, #fff5f5, #ffffff) !important;
+    border-left: 4px solid #f43f5e !important;
+    box-shadow: 0 6px 16px -2px rgba(244, 63, 94, 0.07) !important;
+}
+
+/* Botones de acción inteligentes en Hover */
+.action-btn {
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+@media (max-width: 768px) {
+    .action-btn { opacity: 0.5; } /* Siempre un poco visibles en móviles */
+}
+.group:hover .action-btn {
+    opacity: 0.5;
+}
+.action-btn:hover {
+    opacity: 1 !important;
+    transform: scale(1.03);
+}

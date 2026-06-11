@@ -3,85 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Bitácora 💕</title>
+    <title>Bitácora del Amor</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #fff5f5;
-        }
-        .font-romance {
-            font-family: 'Dancing Script', cursive;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght=700&family=Plus+Jakarta+Sans:wght=400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="text-gray-800 antialiased">
+<body class="text-gray-700 antialiased bg-[#fffafb] pb-24">
 
-    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-pink-100 shadow-sm transition-all">
-        <div class="max-w-xl mx-auto px-4 py-4 text-center">
-            <h1 class="font-romance text-4xl text-pink-600 font-bold mb-1">Nuestra Historia Día a Día</h1>
-            <p class="text-xs text-gray-500 uppercase tracking-widest font-semibold">17 Dic 2025 — 10 Jun 2026</p>
+    <header class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-pink-50 shadow-sm py-4 transition-all">
+        <div class="max-w-4xl mx-auto px-4 md:px-6">
             
-            <div class="mt-4 relative">
-                <input type="text" id="search-bar" placeholder="Buscar un recuerdo... (ej: Villa Burguer)" 
-                       class="w-full px-4 py-2 text-sm bg-pink-50 border border-pink-200 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400 text-gray-700 placeholder-pink-300 transition-all">
-                <span class="absolute right-4 top-2.5 text-pink-400 text-sm">🔍</span>
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-4 border-b border-rose-50/60 pb-3">
+                <h1 class="font-romance text-3xl text-rose-500 font-bold tracking-wide">Bitácora del Amor</h1>
+                <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Isaías & Ariana 💕</p>
+            </div>
+            
+            <div class="relative max-w-2xl mx-auto mb-3">
+                <div class="flex gap-2 items-center">
+                    <div class="relative flex-1">
+                        <input type="text" id="search-bar" placeholder="Buscar un recuerdo..." autocomplete="off"
+                               class="w-full px-5 py-2.5 text-xs bg-rose-50/40 border border-rose-100 rounded-full focus:outline-none focus:ring-2 focus:ring-rose-300 text-gray-700 placeholder-rose-300 transition-all shadow-inner">
+                        <span class="absolute right-4 top-2.5 text-rose-300 text-xs">🔍</span>
+                    </div>
+                    <button id="btn-toggle-form" class="px-4 py-2.5 bg-gradient-to-r from-rose-400 to-pink-400 text-white font-semibold text-xs rounded-full shadow-sm hover:opacity-95 transition-all whitespace-nowrap">
+                        ✍️ Nuevo Día
+                    </button>
+                </div>
+
+                <div id="search-suggestions" class="hidden absolute left-0 right-0 mt-2 bg-white/95 backdrop-blur-md border border-rose-100 rounded-2xl shadow-xl p-4 z-50 card-appear">
+                    <p class="text-[11px] text-gray-400 font-bold uppercase tracking-wider mb-2.5 px-1">💡 Ideas para buscar rápido:</p>
+                    <div class="flex flex-wrap gap-1.5 text-xs">
+                        <span class="tag-sug" data-word="basket">Basket</span>
+                        <span class="tag-sug" data-word="futbol">Futbol</span>
+                        <span class="tag-sug" data-word="gym">Gym</span>
+                        <span class="tag-sug" data-word="pizza">Pizza</span>
+                        <span class="tag-sug" data-word="donas">Donas</span>
+                        <span class="tag-sug" data-word="hamburguesa">Hamburguesas</span>
+                        <span class="tag-sug" data-word="shucos">Shucos</span>
+                        <span class="tag-sug" data-word="volcán">Volcanes</span>
+                        <span class="tag-sug" data-word="bolita">Apodo Bolita</span>
+                        <span class="tag-sug" data-word="amo">"Te amo"</span>
+                        <span class="tag-sug" data-word="estrellas">Estrellas</span>
+                        <span class="tag-sug" data-word="Roxana">Roxana</span>
+                        <span class="tag-sug" data-word="Poste">Poste</span>
+                        <span class="tag-sug" data-word="Montse">Montse</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-start md:justify-center gap-1.5 overflow-x-auto py-1 px-1 w-full max-w-2xl no-scrollbar">
+                <button data-mes="todos" class="mes-btn active px-3.5 py-1.5 rounded-full transition-all text-[11px] font-semibold">Todos</button>
+                <button data-mes="Diciembre" class="mes-btn px-3.5 py-1.5 rounded-full transition-all text-[11px] font-semibold">Dic</button>
+                <button data-mes="Enero" class="mes-btn px-3.5 py-1.5 rounded-full transition-all text-[11px] font-semibold">Ene</button>
+                <button data-mes="Febrero" class="mes-btn px-3.5 py-1.5 rounded-full transition-all text-[11px] font-semibold">Feb</button>
+                <button data-mes="Marzo" class="mes-btn px-3.5 py-1.5 rounded-full transition-all text-[11px] font-semibold">Mar</button>
+                <button data-mes="Abril" class="mes-btn px-3.5 py-1.5 rounded-full transition-all text-[11px] font-semibold">Abr</button>
+                <button data-mes="Mayo" class="mes-btn px-3.5 py-1.5 rounded-full transition-all text-[11px] font-semibold">May</button>
+                <button data-mes="Junio" class="mes-btn px-3.5 py-1.5 rounded-full transition-all text-[11px] font-semibold">Jun</button>
+                <button data-mes="especiales" class="especial-filter-btn px-3.5 py-1.5 rounded-full transition-all text-[11px] font-bold text-rose-500 bg-rose-50 border border-rose-100">Importantes ❤️</button>
             </div>
         </div>
     </header>
 
-    <main class="max-w-xl mx-auto px-4 py-8">
+    <div id="form-container" class="max-w-xl mx-auto px-6 my-6 hidden">
+        <form id="bitacora-form" class="bg-white rounded-3xl p-6 border border-rose-50 shadow-lg space-y-5">
+            <h3 id="form-title" class="text-sm font-bold text-gray-700 flex items-center gap-2">📝 Guardar lo vivido hoy</h3>
+            <input type="hidden" id="edit-index" value="">
+
+            <div>
+                <label class="block text-[10px] font-bold uppercase text-gray-400 tracking-wider mb-2">¿Quién escribe?</label>
+                <div class="grid grid-cols-2 gap-3">
+                    <label class="flex items-center justify-center gap-2 p-2.5 rounded-xl border border-purple-100 bg-purple-50/30 cursor-pointer hover:bg-purple-50 transition-all font-semibold text-purple-600 text-xs">
+                        <input type="radio" name="autor" id="autor-ari" value="Ari" checked class="accent-purple-500"> 👩‍🎓 Ari
+                    </label>
+                    <label class="flex items-center justify-center gap-2 p-2.5 rounded-xl border border-blue-100 bg-blue-50/30 cursor-pointer hover:bg-blue-50 transition-all font-semibold text-blue-600 text-xs">
+                        <input type="radio" name="autor" id="autor-isaias" value="Isaias" class="accent-blue-500"> 👨‍💻 Isaías
+                    </label>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label for="input-mes" class="block text-[10px] font-bold uppercase text-gray-400 tracking-wider mb-1.5">Mes</label>
+                    <select id="input-mes" required class="w-full px-3 py-2 bg-gray-50/50 border border-gray-100 rounded-xl text-xs focus:outline-none focus:border-rose-300">
+                        <option value="Diciembre">Diciembre</option>
+                        <option value="Enero">Enero</option>
+                        <option value="Febrero">Febrero</option>
+                        <option value="Marzo">Marzo</option>
+                        <option value="Abril">Abril</option>
+                        <option value="Mayo">Mayo</option>
+                        <option value="Junio">Junio</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="input-fecha" class="block text-[10px] font-bold uppercase text-gray-400 tracking-wider mb-1.5">Fecha descriptiva</label>
+                    <input type="text" id="input-fecha" placeholder="Ej: 11 de Junio" required 
+                           class="w-full px-3 py-2 bg-gray-50/50 border border-gray-100 rounded-xl text-xs focus:outline-none focus:border-rose-300">
+                </div>
+            </div>
+
+            <div class="py-0.5">
+                <label class="flex items-center gap-2 text-xs font-semibold text-gray-500 cursor-pointer select-none">
+                    <input type="checkbox" id="input-especial" class="accent-rose-400 rounded-md h-3.5 w-3.5"> ¿Es un día especial?
+                </label>
+            </div>
+
+            <div>
+                <label for="input-texto" class="block text-[10px] font-bold uppercase text-gray-400 tracking-wider mb-1.5">¿Qué pasó hoy?</label>
+                <textarea id="input-texto" rows="3" placeholder="Escribe aquí nuestro recuerdo..." required 
+                          class="w-full px-3 py-2 bg-gray-50/50 border border-gray-100 rounded-xl text-xs focus:outline-none focus:border-rose-300 leading-relaxed"></textarea>
+            </div>
+
+            <div class="flex gap-2 pt-1">
+                <button type="submit" id="btn-submit-form" class="flex-1 py-2.5 bg-gradient-to-r from-rose-400 to-pink-400 text-white font-bold text-xs rounded-xl shadow-md hover:opacity-95 transition-all">Guardar Recuerdo ✨</button>
+                <button type="button" id="btn-cancelar" class="px-4 py-2.5 bg-gray-50 text-gray-400 font-medium text-xs rounded-xl hover:bg-gray-100 transition-all">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+    <main class="max-w-5xl mx-auto px-4 md:px-6 mt-6">
         
-        <div class="bg-gradient-to-r from-pink-400 to-rose-400 rounded-2xl p-4 text-white text-center shadow-md mb-8">
-            <p class="text-sm opacity-90 uppercase tracking-wider font-semibold">Llevamos exactamente</p>
-            <h2 class="text-3xl font-bold my-1">175 Días Juntos ✨</h2>
-            <p class="text-xs opacity-75">Y cada uno ha sido capturado aquí.</p>
+        <div class="max-w-2xl mx-auto text-center mb-6 px-4 py-2.5 bg-rose-50/20 border border-rose-100/40 rounded-xl">
+            <p class="text-xs text-rose-700/80 font-medium italic">
+                <span class="font-bold font-romance text-xl md:text-2xl not-italic text-rose-500">13 de Diciembre del 2025 a las 9:45 AM</span> 
+            </p>
         </div>
 
-        <div class="relative border-l-2 border-pink-200 ml-3 md:ml-6 space-y-8">
-            
-            <div class="relative pl-6 md:pl-8 group">
-                <div class="absolute -left-[9px] top-1 bg-pink-500 w-4 h-4 rounded-full border-4 border-white shadow-sm group-hover:scale-125 transition-transform"></div>
-                
-                <div class="bg-white rounded-2xl p-5 shadow-sm border border-pink-50 hover:shadow-md transition-shadow">
-                    <span class="inline-block px-3 py-1 bg-pink-100 text-pink-700 font-bold text-xs rounded-full mb-3">
-                        📅 Miércoles, 17 de Diciembre
-                    </span>
-                    <p class="text-gray-700 leading-relaxed text-sm md:text-base">
-                        Vino poste y fuimos a comprar las promociones de <strong class="text-pink-600 font-semibold">Villa Burguer</strong> y fuimos a la posada del sector 5, llegó poca gente e hicimos la fila para la comida como 5 veces.
-                    </p>
-                    <div class="mt-4 flex justify-end">
-                        <span class="text-xs text-gray-400 font-medium">❤️ Recuerdo #1</span>
-                    </div>
+        <div class="max-w-2xl mx-auto bg-gradient-to-br from-rose-300 via-pink-300 to-rose-400 rounded-xl p-4 text-white shadow-sm mb-10 text-center flex justify-around items-center">
+            <div class="flex-1">
+                <p class="text-[9px] opacity-90 uppercase font-bold tracking-wider mb-0.5">Días</p>
+                <h3 id="total-dias" class="text-2xl font-black tracking-tight">0</h3>
+            </div>
+            <div class="w-px h-6 bg-white/20"></div>
+            <div class="flex-1">
+                <p class="text-[9px] opacity-90 uppercase font-bold tracking-wider mb-0.5">Ari</p>
+                <h3 id="total-ari" class="text-2xl font-black text-purple-50 tracking-tight">0</h3>
+            </div>
+            <div class="w-px h-6 bg-white/20"></div>
+            <div class="flex-1">
+                <p class="text-[9px] opacity-90 uppercase font-bold tracking-wider mb-0.5">Isaías</p>
+                <h3 id="total-isaias" class="text-2xl font-black text-blue-50 tracking-tight">0</h3>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
+            <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-rose-100/40 transform -translate-x-1/2 z-0"></div>
+
+            <div class="space-y-4">
+                <div class="sticky top-32 bg-purple-50/90 border border-purple-100/50 px-4 py-2 rounded-xl text-center backdrop-blur-md z-10 shadow-sm">
+                    <h2 class="font-bold text-[10px] uppercase tracking-wider text-purple-600 flex items-center justify-center gap-1.5">👩‍🎓 Lado de Ari (Bolita)</h2>
                 </div>
+                <div id="timeline-ari" class="space-y-4 relative z-10"></div>
             </div>
 
-            <div class="relative pl-6 md:pl-8 group">
-                <div class="absolute -left-[9px] top-1 bg-pink-400 w-4 h-4 rounded-full border-4 border-white shadow-sm group-hover:scale-125 transition-transform"></div>
-                
-                <div class="bg-white rounded-2xl p-5 shadow-sm border border-pink-50 hover:shadow-md transition-shadow">
-                    <span class="inline-block px-3 py-1 bg-rose-100 text-rose-700 font-bold text-xs rounded-full mb-3">
-                        📅 Jueves, 18 de Diciembre
-                    </span>
-                    <p class="text-gray-700 leading-relaxed text-sm md:text-base">
-                        Hoy nos desvelamos hablando por teléfono de puras tonterías. Me di cuenta de que me encantas más de lo que admito en voz alta.
-                    </p>
-                    <div class="mt-4 flex justify-end">
-                        <span class="text-xs text-gray-400 font-medium">❤️ Recuerdo #2</span>
-                    </div>
+            <div class="space-y-4 mt-4 md:mt-0">
+                <div class="sticky top-32 bg-blue-50/90 border border-blue-100/50 px-4 py-2 rounded-xl text-center backdrop-blur-md z-10 shadow-sm">
+                    <h2 class="font-bold text-[10px] uppercase tracking-wider text-blue-600 flex items-center justify-center gap-1.5">👨‍💻 Lado de Isaías</h2>
                 </div>
+                <div id="timeline-isaias" class="space-y-4 relative z-10"></div>
             </div>
+        </div>
 
-            </div>
+        <div id="no-results" class="hidden text-center py-16 text-gray-400 card-appear">
+            <span class="text-3xl block mb-2">✨</span>
+            <p class="text-xs font-medium">No encontramos ningún recuerdo con ese filtro o palabra...</p>
+        </div>
     </main>
 
-    <footer class="py-8 text-center text-xs text-gray-400 font-medium mt-12">
-        Hecho con ❤️ por ti para los 6 meses más bonitos.
+    <footer class="py-8 text-center text-[11px] text-gray-300 font-medium mt-16 tracking-wide border-t border-rose-50/50 max-w-xs mx-auto">
+        Hecho con amor por y para nosotros ❤️
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
