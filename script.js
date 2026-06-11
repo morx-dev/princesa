@@ -198,7 +198,68 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // --- Generación dinámica de meses ---
+    // Orden de la relación empezando en Diciembre 2025
+    const ORDEN_MESES = ["Diciembre", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre"];
+    const NOMBRES_JS_MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+
+    function mesesAMostrar() {
+        // Mes actual real (en español, con mayúscula inicial)
+        const ahora = new Date();
+        const mesActualNombre = NOMBRES_JS_MESES[ahora.getMonth()];
+        const mesActualCap = mesActualNombre.charAt(0).toUpperCase() + mesActualNombre.slice(1);
+
+        // Mes más alto presente en los datos guardados
+        let indiceMaximo = ORDEN_MESES.indexOf("Junio");
+        memoriaCompartida.forEach(r => {
+            const idx = ORDEN_MESES.indexOf(r.mes);
+            if (idx > indiceMaximo) indiceMaximo = idx;
+        });
+
+        // También aseguramos incluir el mes actual (y uno extra para "Nuevo Día" futuro)
+        const idxMesActual = ORDEN_MESES.indexOf(mesActualCap);
+        if (idxMesActual !== -1 && idxMesActual > indiceMaximo) indiceMaximo = idxMesActual;
+
+        const limite = Math.min(indiceMaximo + 1, ORDEN_MESES.length - 1); // +1 mes "futuro" disponible para crear
+        return ORDEN_MESES.slice(0, limite + 1);
+    }
+
+    function generarMesesDinamicos() {
+        const meses = mesesAMostrar();
+
+        // Botones de filtro
+        const cont = document.getElementById('meses-dinamicos');
+        cont.innerHTML = "";
+        meses.forEach(mes => {
+            const btn = document.createElement('button');
+            btn.dataset.mes = mes;
+            btn.className = "mes-btn px-4 py-2 rounded-full text-xs font-semibold snap-center";
+            btn.textContent = mes;
+            cont.appendChild(btn);
+        });
+
+        // Opciones del select del formulario
+        const select = document.getElementById('input-mes');
+        select.innerHTML = "";
+        meses.forEach(mes => {
+            const opt = document.createElement('option');
+            opt.value = mes;
+            opt.textContent = mes;
+            select.appendChild(opt);
+        });
+
+        // Selecciona por defecto el mes actual en el formulario, si está en la lista
+        const ahora = new Date();
+        const mesActualNombre = NOMBRES_JS_MESES[ahora.getMonth()];
+        const mesActualCap = mesActualNombre.charAt(0).toUpperCase() + mesActualNombre.slice(1);
+        if (meses.includes(mesActualCap)) select.value = mesActualCap;
+    }
+
+    generarMesesDinamicos();
+    // ------------------------------------
+
     const searchBar = document.getElementById('search-bar');
+
     const timelineAri = document.getElementById('timeline-ari');
     const timelineIsaias = document.getElementById('timeline-isaias');
     const noResults = document.getElementById('no-results');
@@ -275,7 +336,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             card.innerHTML = `
                 <div class="flex justify-between items-start gap-2 mb-1.5">
-                    <span class="text-[11px] font-bold text-gray-400 tracking-wide">${recuerdo.fecha} de ${recuerdo.mes}</span>
+                    <span class="text-[11px] font-bold text-gray-400 tracking-wide">${recuerdo.fecha}</span>
                     ${recuerdo.especial ? '<span class="text-xs shrink-0 select-none">⭐ Día Especial</span>' : ''}
                 </div>
                 <p class="text-xs text-gray-600 leading-relaxed font-normal whitespace-pre-line">${recuerdo.texto}</p>
@@ -348,6 +409,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         guardarEnStorage();
+        generarMesesDinamicos();
         actualizarDashboard();
         aplicarFiltrosYBusqueda();
         this.reset();
