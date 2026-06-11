@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght=700&family=Plus+Jakarta+Sans:wght=400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700&family=Plus+Jakarta+Sans:wght=400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="text-gray-700 antialiased bg-[#fffafb] pb-24">
@@ -15,12 +15,12 @@
     <header class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-pink-50 shadow-sm py-4 transition-all">
         <div class="max-w-4xl mx-auto px-4 md:px-6">
             
-            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-4 border-b border-rose-50/60 pb-3">
-                <h1 class="font-romance text-3xl text-rose-500 font-bold tracking-wide">Bitácora del Amor</h1>
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-3 border-b border-rose-50/60 pb-2">
+                <h1 class="font-elegant text-2xl md:text-3xl text-rose-500 font-bold tracking-wide italic">Bitácora del Amor</h1>
                 <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Isaías & Ariana 💕</p>
             </div>
             
-            <div class="relative max-w-2xl mx-auto mb-3">
+            <div class="relative max-w-2xl mx-auto mb-4">
                 <div class="flex gap-2 items-center">
                     <div class="relative flex-1">
                         <input type="text" id="search-bar" placeholder="Buscar un recuerdo..." autocomplete="off"
@@ -53,17 +53,20 @@
                 </div>
             </div>
 
-            <div class="flex justify-start md:justify-center gap-1.5 overflow-x-auto py-1 px-1 w-full max-w-2xl no-scrollbar">
-                <button data-mes="todos" class="mes-btn active px-3.5 py-1.5 rounded-full transition-all text-[11px] font-semibold">Todos</button>
-                <button data-mes="Diciembre" class="mes-btn px-3.5 py-1.5 rounded-full transition-all text-[11px] font-semibold">Dic</button>
-                <button data-mes="Enero" class="mes-btn px-3.5 py-1.5 rounded-full transition-all text-[11px] font-semibold">Ene</button>
-                <button data-mes="Febrero" class="mes-btn px-3.5 py-1.5 rounded-full transition-all text-[11px] font-semibold">Feb</button>
-                <button data-mes="Marzo" class="mes-btn px-3.5 py-1.5 rounded-full transition-all text-[11px] font-semibold">Mar</button>
-                <button data-mes="Abril" class="mes-btn px-3.5 py-1.5 rounded-full transition-all text-[11px] font-semibold">Abr</button>
-                <button data-mes="Mayo" class="mes-btn px-3.5 py-1.5 rounded-full transition-all text-[11px] font-semibold">May</button>
-                <button data-mes="Junio" class="mes-btn px-3.5 py-1.5 rounded-full transition-all text-[11px] font-semibold">Jun</button>
-                <button data-mes="especiales" class="especial-filter-btn px-3.5 py-1.5 rounded-full transition-all text-[11px] font-bold text-rose-500 bg-rose-50 border border-rose-100">Importantes ❤️</button>
+            <div class="w-full overflow-x-auto py-1 no-scrollbar relative z-50 block">
+                <div id="months-filter" class="flex gap-2 min-w-max px-1">
+                    <button data-mes="todos" class="mes-btn active px-4 py-2 rounded-full transition-all text-xs font-semibold">Todos</button>
+                    <button data-mes="Diciembre" class="mes-btn px-4 py-2 rounded-full transition-all text-xs font-semibold">Dic</button>
+                    <button data-mes="Enero" class="mes-btn px-4 py-2 rounded-full transition-all text-xs font-semibold">Ene</button>
+                    <button data-mes="Febrero" class="mes-btn px-4 py-2 rounded-full transition-all text-xs font-semibold">Feb</button>
+                    <button data-mes="Marzo" class="mes-btn px-4 py-2 rounded-full transition-all text-xs font-semibold">Mar</button>
+                    <button data-mes="Abril" class="mes-btn px-4 py-2 rounded-full transition-all text-xs font-semibold">Abr</button>
+                    <button data-mes="Mayo" class="mes-btn px-4 py-2 rounded-full transition-all text-xs font-semibold">May</button>
+                    <button data-mes="Junio" class="mes-btn px-4 py-2 rounded-full transition-all text-xs font-semibold">Jun</button>
+                    <button data-mes="especiales" class="especial-filter-btn px-4 py-2 rounded-full transition-all text-xs font-bold text-rose-500 bg-rose-50 border border-rose-100">Importantes ❤️</button>
+                </div>
             </div>
+
         </div>
     </header>
 
@@ -76,10 +79,10 @@
                 <label class="block text-[10px] font-bold uppercase text-gray-400 tracking-wider mb-2">¿Quién escribe?</label>
                 <div class="grid grid-cols-2 gap-3">
                     <label class="flex items-center justify-center gap-2 p-2.5 rounded-xl border border-purple-100 bg-purple-50/30 cursor-pointer hover:bg-purple-50 transition-all font-semibold text-purple-600 text-xs">
-                        <input type="radio" name="autor" id="autor-ari" value="Ari" checked class="accent-purple-500"> 👩‍🎓 Ari
+                        <input type="radio" name="autor" id="autor-ari" value="Ari" checked class="accent-purple-500">Ariana
                     </label>
                     <label class="flex items-center justify-center gap-2 p-2.5 rounded-xl border border-blue-100 bg-blue-50/30 cursor-pointer hover:bg-blue-50 transition-all font-semibold text-blue-600 text-xs">
-                        <input type="radio" name="autor" id="autor-isaias" value="Isaias" class="accent-blue-500"> 👨‍💻 Isaías
+                        <input type="radio" name="autor" id="autor-isaias" value="Isaias" class="accent-blue-500">Isaías
                     </label>
                 </div>
             </div>
@@ -125,9 +128,9 @@
 
     <main class="max-w-5xl mx-auto px-4 md:px-6 mt-6">
         
-        <div class="max-w-2xl mx-auto text-center mb-6 px-4 py-2.5 bg-rose-50/20 border border-rose-100/40 rounded-xl">
-            <p class="text-xs text-rose-700/80 font-medium italic">
-                <span class="font-bold font-romance text-xl md:text-2xl not-italic text-rose-500">13 de Diciembre del 2025 a las 9:45 AM</span> 
+        <div class="max-w-2xl mx-auto text-center mb-6 px-4 py-3 bg-rose-50/20 border border-rose-100/40 rounded-xl">
+            <p class="text-xs text-rose-700/80 font-medium">
+                <span class="font-elegant text-lg md:text-xl text-rose-500 font-bold italic tracking-wide">13 de Diciembre del 2025 a las 9:45 AM</span> 
             </p>
         </div>
 
@@ -152,14 +155,14 @@
             <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-rose-100/40 transform -translate-x-1/2 z-0"></div>
 
             <div class="space-y-4">
-                <div class="sticky top-32 bg-purple-50/90 border border-purple-100/50 px-4 py-2 rounded-xl text-center backdrop-blur-md z-10 shadow-sm">
+                <div class="sticky top-36 md:top-32 bg-purple-50/90 border border-purple-100/50 px-4 py-2 rounded-xl text-center backdrop-blur-md z-10 shadow-sm">
                     <h2 class="font-bold text-[10px] uppercase tracking-wider text-purple-600 flex items-center justify-center gap-1.5">👩‍🎓 Lado de Ari (Bolita)</h2>
                 </div>
                 <div id="timeline-ari" class="space-y-4 relative z-10"></div>
             </div>
 
             <div class="space-y-4 mt-4 md:mt-0">
-                <div class="sticky top-32 bg-blue-50/90 border border-blue-100/50 px-4 py-2 rounded-xl text-center backdrop-blur-md z-10 shadow-sm">
+                <div class="sticky top-36 md:top-32 bg-blue-50/90 border border-blue-100/50 px-4 py-2 rounded-xl text-center backdrop-blur-md z-10 shadow-sm">
                     <h2 class="font-bold text-[10px] uppercase tracking-wider text-blue-600 flex items-center justify-center gap-1.5">👨‍💻 Lado de Isaías</h2>
                 </div>
                 <div id="timeline-isaias" class="space-y-4 relative z-10"></div>

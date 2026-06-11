@@ -2,21 +2,30 @@ body {
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-.font-romance {
-    font-family: 'Dancing Script', cursive;
+/* Nueva Fuente Cursiva Elegante y Legible */
+.font-elegant {
+    font-family: 'Playfair Display', Georgia, serif;
 }
 
-/* Ocultar barra de scroll en los botones de meses */
+/* Permitir scroll libre y clics limpios en móviles */
 .no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.no-scrollbar { 
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Scroll suave en iPhone/Android */
+}
 
-/* Botones de Mes Pastel Amigables */
+/* Botones de Mes */
 .mes-btn, .especial-filter-btn {
     background-color: #ffffff;
-    border: 1px solid #fdf2f8;
+    border: 1px solid #ffe4e6;
     color: #f43f5e;
     white-space: nowrap;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+    cursor: pointer;
+    display: inline-block;
+    touch-action: manipulation; /* Optimiza clics táctiles rápidos */
 }
 .mes-btn:hover { background-color: #fff1f2; }
 .mes-btn.active {
@@ -25,14 +34,13 @@ body {
     color: #ffffff;
 }
 
-/* Botón Importantes Activo */
 .especial-filter-btn.active {
     background-color: #e11d48;
     color: #ffffff;
     border-color: #e11d48;
 }
 
-/* Etiquetas de sugerencia del buscador */
+/* Etiquetas de sugerencia */
 .tag-sug {
     padding: 6px 12px;
     background-color: #fbf7f8;
@@ -47,50 +55,43 @@ body {
     background-color: #ffe4e6;
     border-color: #fecdd3;
     color: #e11d48;
-    transform: translateY(-1px);
 }
 
-/* Animación limpia de aparición */
+/* Animación */
 .card-appear {
     animation: smoothUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-
 @keyframes smoothUp {
-    from { opacity: 0; transform: translateY(10px) scale(0.99); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Estilos de las Tarjetas Blandas y Separadas */
+/* Tarjetas */
 .card-ari {
     border-left: 3.5px solid #c084fc;
     background-color: #ffffff;
-    box-shadow: 0 4px 12px -1px rgba(192, 132, 252, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+    box-shadow: 0 4px 12px -1px rgba(192, 132, 252, 0.04);
 }
 .card-isaias {
     border-left: 3.5px solid #60a5fa;
     background-color: #ffffff;
-    box-shadow: 0 4px 12px -1px rgba(96, 165, 250, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+    box-shadow: 0 4px 12px -1px rgba(96, 165, 250, 0.04);
 }
-
-/* Tarjetas de Días Importantes */
 .card-especial {
     background: linear-gradient(to bottom right, #fff5f5, #ffffff) !important;
     border-left: 4px solid #f43f5e !important;
     box-shadow: 0 6px 16px -2px rgba(244, 63, 94, 0.07) !important;
 }
 
-/* Botones de acción inteligentes en Hover */
+/* Botones de acción */
 .action-btn {
-    opacity: 0;
+    opacity: 0.4;
     transition: all 0.2s ease;
 }
-@media (max-width: 768px) {
-    .action-btn { opacity: 0.5; } /* Siempre un poco visibles en móviles */
-}
-.group:hover .action-btn {
-    opacity: 0.5;
+@media (min-width: 768px) {
+    .action-btn { opacity: 0; }
+    .group:hover .action-btn { opacity: 0.5; }
 }
 .action-btn:hover {
     opacity: 1 !important;
-    transform: scale(1.03);
 }
