@@ -2,9 +2,9 @@ body {
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-/* Nueva Fuente Cursiva Elegante y Legible */
+/* Fuente limpia y recta reemplazando la cursiva */
 .font-elegant {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 /* Permitir scroll libre y clics limpios en móviles */
@@ -34,27 +34,16 @@ body {
     color: #ffffff;
 }
 
+.especial-filter-btn {
+    border-color: #fbcfe8;
+    color: #db2777;
+    background-color: #fdf2f8;
+}
+.especial-filter-btn:hover { background-color: #fce7f3; }
 .especial-filter-btn.active {
-    background-color: #e11d48;
+    background-color: #db2777;
     color: #ffffff;
-    border-color: #e11d48;
-}
-
-/* Etiquetas de sugerencia */
-.tag-sug {
-    padding: 6px 12px;
-    background-color: #fbf7f8;
-    border: 1px solid #f3e8eb;
-    border-radius: 9999px;
-    color: #886b73;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    user-select: none;
-}
-.tag-sug:hover {
-    background-color: #ffe4e6;
-    border-color: #fecdd3;
-    color: #e11d48;
+    border-color: #db2777;
 }
 
 /* Animación */
@@ -70,28 +59,22 @@ body {
 .card-ari {
     border-left: 3.5px solid #c084fc;
     background-color: #ffffff;
-    box-shadow: 0 4px 12px -1px rgba(192, 132, 252, 0.04);
+    box-shadow: 0 4px 12px -1px rgba(192, 132, 252, 0.06), 0 2px 4px -1px rgba(192, 132, 252, 0.03);
 }
 .card-isaias {
     border-left: 3.5px solid #60a5fa;
     background-color: #ffffff;
-    box-shadow: 0 4px 12px -1px rgba(96, 165, 250, 0.04);
-}
-.card-especial {
-    background: linear-gradient(to bottom right, #fff5f5, #ffffff) !important;
-    border-left: 4px solid #f43f5e !important;
-    box-shadow: 0 6px 16px -2px rgba(244, 63, 94, 0.07) !important;
+    box-shadow: 0 4px 12px -1px rgba(96, 165, 250, 0.06), 0 2px 4px -1px rgba(96, 165, 250, 0.03);
 }
 
-/* Botones de acción */
-.action-btn {
-    opacity: 0.4;
-    transition: all 0.2s ease;
+/* Bordes destacados para días especiales */
+.border-especial-ari {
+    border: 1.5px solid #fbcfe8 !important;
+    border-left: 4px solid #db2777 !important;
+    background: linear-gradient(to bottom right, #ffffff, #fffdfebd);
 }
-@media (min-width: 768px) {
-    .action-btn { opacity: 0; }
-    .group:hover .action-btn { opacity: 0.5; }
-}
-.action-btn:hover {
-    opacity: 1 !important;
+.border-especial-isaias {
+    border: 1.5px solid #bfdbfe !important;
+    border-left: 4px solid #2563eb !important;
+    background: linear-gradient(to bottom right, #ffffff, #fefeffbd);
 }

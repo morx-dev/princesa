@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700&family=Plus+Jakarta+Sans:wght=400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="text-gray-700 antialiased bg-[#fffafb] pb-24">
@@ -15,56 +15,39 @@
     <header class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-pink-50 shadow-sm py-4 transition-all">
         <div class="max-w-4xl mx-auto px-4 md:px-6">
             
-            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-3 border-b border-rose-50/60 pb-2">
-                <h1 class="font-elegant text-2xl md:text-3xl text-rose-500 font-bold tracking-wide italic">Bitácora del Amor</h1>
-                <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Isaías & Ariana 💕</p>
+            <div class="flex flex-row items-baseline justify-between gap-1 mb-3 border-b border-rose-50/60 pb-2">
+                <div>
+                    <h1 class="font-elegant text-2xl md:text-3xl text-rose-500 font-bold tracking-wide">Bitácora del Amor</h1>
+                    <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Isaías & Ariana</p>
+                </div>
+                <button id="btn-toggle-form" class="px-4 py-2 bg-gradient-to-r from-rose-400 to-pink-400 text-white font-semibold text-xs rounded-full shadow-sm hover:opacity-95 transition-all shrink-0">
+                    ✍️ Nuevo Día
+                </button>
             </div>
             
-            <div class="relative max-w-2xl mx-auto mb-4">
-                <div class="flex gap-2 items-center">
-                    <div class="relative flex-1">
-                        <input type="text" id="search-bar" placeholder="Buscar un recuerdo..." autocomplete="off"
-                               class="w-full px-5 py-2.5 text-xs bg-rose-50/40 border border-rose-100 rounded-full focus:outline-none focus:ring-2 focus:ring-rose-300 text-gray-700 placeholder-rose-300 transition-all shadow-inner">
-                        <span class="absolute right-4 top-2.5 text-rose-300 text-xs">🔍</span>
-                    </div>
-                    <button id="btn-toggle-form" class="px-4 py-2.5 bg-gradient-to-r from-rose-400 to-pink-400 text-white font-semibold text-xs rounded-full shadow-sm hover:opacity-95 transition-all whitespace-nowrap">
-                        ✍️ Nuevo Día
-                    </button>
-                </div>
-
-                <div id="search-suggestions" class="hidden absolute left-0 right-0 mt-2 bg-white/95 backdrop-blur-md border border-rose-100 rounded-2xl shadow-xl p-4 z-50 card-appear">
-                    <p class="text-[11px] text-gray-400 font-bold uppercase tracking-wider mb-2.5 px-1">💡 Ideas para buscar rápido:</p>
-                    <div class="flex flex-wrap gap-1.5 text-xs">
-                        <span class="tag-sug" data-word="basket">Basket</span>
-                        <span class="tag-sug" data-word="futbol">Futbol</span>
-                        <span class="tag-sug" data-word="gym">Gym</span>
-                        <span class="tag-sug" data-word="pizza">Pizza</span>
-                        <span class="tag-sug" data-word="donas">Donas</span>
-                        <span class="tag-sug" data-word="hamburguesa">Hamburguesas</span>
-                        <span class="tag-sug" data-word="shucos">Shucos</span>
-                        <span class="tag-sug" data-word="volcán">Volcanes</span>
-                        <span class="tag-sug" data-word="bolita">Apodo Bolita</span>
-                        <span class="tag-sug" data-word="amo">"Te amo"</span>
-                        <span class="tag-sug" data-word="estrellas">Estrellas</span>
-                        <span class="tag-sug" data-word="Roxana">Roxana</span>
-                        <span class="tag-sug" data-word="Poste">Poste</span>
-                        <span class="tag-sug" data-word="Montse">Montse</span>
-                    </div>
+            <div class="max-w-md mx-auto mb-4">
+                <div class="relative w-full">
+                    <input type="text" id="search-bar" placeholder="Escribe una fecha (ej: 17 de Diciembre)..." autocomplete="off"
+                           class="w-full px-5 py-2.5 text-xs bg-rose-50/40 border border-rose-100 rounded-full focus:outline-none focus:ring-2 focus:ring-rose-300 text-gray-700 placeholder-rose-300 transition-all shadow-inner">
+                    <span class="absolute right-4 top-2.5 text-rose-300 text-xs">🔍</span>
                 </div>
             </div>
 
-            <div class="w-full overflow-x-auto py-1 no-scrollbar relative z-50 block">
-                <div id="months-filter" class="flex gap-2 min-w-max px-1">
-                    <button data-mes="todos" class="mes-btn active px-4 py-2 rounded-full transition-all text-xs font-semibold">Todos</button>
-                    <button data-mes="Diciembre" class="mes-btn px-4 py-2 rounded-full transition-all text-xs font-semibold">Dic</button>
-                    <button data-mes="Enero" class="mes-btn px-4 py-2 rounded-full transition-all text-xs font-semibold">Ene</button>
-                    <button data-mes="Febrero" class="mes-btn px-4 py-2 rounded-full transition-all text-xs font-semibold">Feb</button>
-                    <button data-mes="Marzo" class="mes-btn px-4 py-2 rounded-full transition-all text-xs font-semibold">Mar</button>
-                    <button data-mes="Abril" class="mes-btn px-4 py-2 rounded-full transition-all text-xs font-semibold">Abr</button>
-                    <button data-mes="Mayo" class="mes-btn px-4 py-2 rounded-full transition-all text-xs font-semibold">May</button>
-                    <button data-mes="Junio" class="mes-btn px-4 py-2 rounded-full transition-all text-xs font-semibold">Jun</button>
-                    <button data-mes="especiales" class="especial-filter-btn px-4 py-2 rounded-full transition-all text-xs font-bold text-rose-500 bg-rose-50 border border-rose-100">Importantes ❤️</button>
-                </div>
+            <div id="months-filter" class="flex gap-2 overflow-x-auto no-scrollbar py-1 select-none items-center scroll-smooth snap-x">
+                <button data-mes="TODOS" class="mes-btn active px-4 py-2 rounded-full text-xs font-semibold snap-center">Todos</button>
+                <button data-mes="Diciembre" class="mes-btn px-4 py-2 rounded-full text-xs font-semibold snap-center">Diciembre</button>
+                <button data-mes="Enero" class="mes-btn px-4 py-2 rounded-full text-xs font-semibold snap-center">Enero</button>
+                <button data-mes="Febrero" class="mes-btn px-4 py-2 rounded-full text-xs font-semibold snap-center">Febrero</button>
+                <button data-mes="Marzo" class="mes-btn px-4 py-2 rounded-full text-xs font-semibold snap-center">Marzo</button>
+                <button data-mes="Abril" class="mes-btn px-4 py-2 rounded-full text-xs font-semibold snap-center">Abril</button>
+                <button data-mes="Mayo" class="mes-btn px-4 py-2 rounded-full text-xs font-semibold snap-center">Mayo</button>
+                <button data-mes="Junio" class="mes-btn px-4 py-2 rounded-full text-xs font-semibold snap-center">Junio</button>
+                
+                <div class="w-px h-5 bg-rose-100/60 mx-1 shrink-0"></div>
+                
+                <button id="btn-filtro-especial" data-mes="ESPECIAL" class="especial-filter-btn px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1 snap-center">
+                    <span>⭐</span> Días Importantes
+                </button>
             </div>
 
         </div>
@@ -79,10 +62,10 @@
                 <label class="block text-[10px] font-bold uppercase text-gray-400 tracking-wider mb-2">¿Quién escribe?</label>
                 <div class="grid grid-cols-2 gap-3">
                     <label class="flex items-center justify-center gap-2 p-2.5 rounded-xl border border-purple-100 bg-purple-50/30 cursor-pointer hover:bg-purple-50 transition-all font-semibold text-purple-600 text-xs">
-                        <input type="radio" name="autor" id="autor-ari" value="Ari" checked class="accent-purple-500">Ariana
+                        <input type="radio" name="autor" id="autor-ari" value="Ari" checked class="accent-purple-500"> Ariana
                     </label>
                     <label class="flex items-center justify-center gap-2 p-2.5 rounded-xl border border-blue-100 bg-blue-50/30 cursor-pointer hover:bg-blue-50 transition-all font-semibold text-blue-600 text-xs">
-                        <input type="radio" name="autor" id="autor-isaias" value="Isaias" class="accent-blue-500">Isaías
+                        <input type="radio" name="autor" id="autor-isaias" value="Isaias" class="accent-blue-500"> Isaías
                     </label>
                 </div>
             </div>
@@ -130,18 +113,18 @@
         
         <div class="max-w-2xl mx-auto text-center mb-6 px-4 py-3 bg-rose-50/20 border border-rose-100/40 rounded-xl">
             <p class="text-xs text-rose-700/80 font-medium">
-                <span class="font-elegant text-lg md:text-xl text-rose-500 font-bold italic tracking-wide">13 de Diciembre del 2025 a las 9:45 AM</span> 
+                Nuestra historia comenzó el <span class="font-elegant text-sm text-rose-500 font-bold tracking-wide">13 de Diciembre del 2025</span>
             </p>
         </div>
 
         <div class="max-w-2xl mx-auto bg-gradient-to-br from-rose-300 via-pink-300 to-rose-400 rounded-xl p-4 text-white shadow-sm mb-10 text-center flex justify-around items-center">
             <div class="flex-1">
-                <p class="text-[9px] opacity-90 uppercase font-bold tracking-wider mb-0.5">Días</p>
+                <p class="text-[9px] opacity-90 uppercase font-bold tracking-wider mb-0.5">Días de noviazgo</p>
                 <h3 id="total-dias" class="text-2xl font-black tracking-tight">0</h3>
             </div>
             <div class="w-px h-6 bg-white/20"></div>
             <div class="flex-1">
-                <p class="text-[9px] opacity-90 uppercase font-bold tracking-wider mb-0.5">Ari</p>
+                <p class="text-[9px] opacity-90 uppercase font-bold tracking-wider mb-0.5">Ariana</p>
                 <h3 id="total-ari" class="text-2xl font-black text-purple-50 tracking-tight">0</h3>
             </div>
             <div class="w-px h-6 bg-white/20"></div>
@@ -171,7 +154,7 @@
 
         <div id="no-results" class="hidden text-center py-16 text-gray-400 card-appear">
             <span class="text-3xl block mb-2">✨</span>
-            <p class="text-xs font-medium">No encontramos ningún recuerdo con ese filtro o palabra...</p>
+            <p class="text-xs font-medium">No encontramos ningún recuerdo con ese filtro o fecha...</p>
         </div>
     </main>
 
