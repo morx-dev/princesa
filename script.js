@@ -179,24 +179,33 @@ const baseHistorica = [
     { autor: "Isaias", mes: "Junio", fecha: "10 de Junio", especial: false, texto: "no nos vimos" }
 ];
 
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // Fuerza la sincronización de la base de datos histórica fiel de Isaías,
-    // descartando cualquier dato viejo o de prueba guardado previamente en el navegador
-    const VERSION_BITACORA = "v2-2025-12-17_a_2026-06-10";
-    let memoriaCompartida;
+// --- Configuración de Supabase (base de datos compartida en la nube) ---
+const SUPABASE_URL = "https://dekuxodkibewralvadiy.supabase.co";
+const SUPABASE_KEY = "sb_publishable_SGOq9HK0z1402yR7mXtDAQ_sNwnuLHa";
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    if (localStorage.getItem('bitacora_version') !== VERSION_BITACORA) {
-        memoriaCompartida = [...baseHistorica];
-        localStorage.setItem('bitacora_recuerdos', JSON.stringify(memoriaCompartida));
-        localStorage.setItem('bitacora_version', VERSION_BITACORA);
-    } else {
-        memoriaCompartida = JSON.parse(localStorage.getItem('bitacora_recuerdos'));
-        if (!memoriaCompartida || memoriaCompartida.length === 0) {
+document.addEventListener('DOMContentLoaded', async function() {
+
+    let memoriaCompartida = [];
+
+    // Carga los recuerdos desde Supabase (compartido entre todos los dispositivos).
+    // Si la tabla está vacía (primera vez), se siembra con la base histórica original.
+    async function cargarDesdeSupabase() {
+        const { data, error } = await supabaseClient
+            .from('bitacora')
+            .select('contenido')
+            .eq('id', 1)
+            .single();
+
+        if (error || !data || !data.contenido || data.contenido.length === 0) {
             memoriaCompartida = [...baseHistorica];
-            localStorage.setItem('bitacora_recuerdos', JSON.stringify(memoriaCompartida));
+            await guardarEnStorage();
+        } else {
+            memoriaCompartida = data.contenido;
         }
     }
+
+    await cargarDesdeSupabase();
 
     // --- Generación dinámica de meses ---
     // Orden de la relación empezando en Diciembre 2025
@@ -274,8 +283,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let filtroActual = "TODOS";
 
-    function guardarEnStorage() {
-        localStorage.setItem('bitacora_recuerdos', JSON.stringify(memoriaCompartida));
+    async function guardarEnStorage() {
+        await supabaseClient
+            .from('bitacora')
+            .upsert({ id: 1, contenido: memoriaCompartida });
     }
 
     function calcularDiasNoviazgo() {
